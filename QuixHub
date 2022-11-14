@@ -119,6 +119,8 @@ if game.PlaceId == 7009987220 then
         end,
     })
     
+-- teleports
+
     local firstwallstp = TPTab:CreateButton({
         Name = "First Walls End TP",
         Callback = function()
@@ -127,4 +129,32 @@ if game.PlaceId == 7009987220 then
             pos.CFrame = CFrame.new(16.7769508, 22.0335026, -257.314819, -0.305279166, 0.497483373, -0.811982095, -6.41613696e-09, 0.852686882, 0.522422314, 0.952262878, 0.159484655, -0.26030755)
         end,
     })
-    end
+    
+    local talltwallstp = TPTab:CreateButton({
+        Name = "Tall Walls End TP",
+        Callback = function()
+            local pos = game.Players.LocalPlayer.Character.HumanoidRootPart
+            print("The Talls Walls TP Complete!")
+            pos.CFrame = CFrame.new(16.7769508, 22.0335026, -257.314819, -0.305279166, 0.497483373, -0.811982095, -6.41613696e-09, 0.852686882, 0.522422314, 0.952262878, 0.159484655, -0.26030755)
+        end,
+    })
+
+    local TheSlopeEndTP = TPTab:CreateButton({
+        Name = "The Slope End TP",
+        Callback = function()
+            local pos = game.Players.LocalPlayer.Character.HumanoidRootPart
+            print("The First Walls TP Complete!")
+            pos.CFrame = CFrame.new(121.40538, 18.2752666, 278.292816, -0.0524484217, 0.0751375109, -0.995792925, 5.32820366e-09, 0.997165382, 0.075241074, 0.99862361, 0.00394627033, -0.0522997491)
+        end,
+    })
+
+    local TheBigWallsEndTP = TPTab:CreateButton({
+        Name = "The Big Walls End TP",
+        Callback = function()
+            local pos = game.Players.LocalPlayer.Character.HumanoidRootPart
+            print("The First Walls TP Complete!")
+            pos.CFrame = CFrame.new(-84.7360916, 24.7800255, 276.920197, 0.00123630848, 0.0551245138, 0.998478711, 9.09544973e-09, 0.998479486, -0.0551245548, -0.999999225, 6.81600359e-05, 0.00123442814)
+        end,
+    })
+
+end
