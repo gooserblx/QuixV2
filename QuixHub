@@ -22,12 +22,12 @@ local Window = Rayfield:CreateWindow({
 		Note = "",
 		FileName = "SiriusKey",
 		SaveKey = true,
-		GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-		Key = "KEY_Nf98wHF8e8fh"
+		GrabKeyFromSite = false, 
 	}
 })
 
-local MainTab = Window:CreateTab("Main", 4483362458) -- Title, Image
+local MainTab = Window:CreateTab("Main", 4483362458)
+local VTab = Window:CreateTab("Visuals", 4483362458) 
 
 -- func
 
@@ -70,12 +70,41 @@ function AutoFarm()
 end
 
 local Toggle = MainTab:CreateToggle({
-	Name = "Safe AutoFarm",
+	Name = "Auto Farm",
 	CurrentValue = false,
-	Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Flag = "Toggle1",
 	Callback = function(Value)
 		_G.AutoFarm = Value
         AutoFarm()
+	end,
+})
+
+local Button = MainTab:CreateButton({
+	Name = "Save Wins",
+	Callback = function()
+	    for count = 1,100 do
+            print(count, "out of 100 ragdolls farmed")
+            game.Players.LocalPlayer.Character.Humanoid.Health = 0 
+            wait(3)
+        end
+	end,
+})
+
+local Input = VTab:CreateInput({
+	Name = "Add Fake Wins",
+	PlaceholderText = "0",
+	RemoveTextAfterFocusLost = false,
+	Callback = function(Text)
+		game.Players.LocalPlayer.leaderstats.Wins.Value += Text
+	end,
+})
+
+local Input = VTab:CreateInput({
+	Name = "Add Fake Ragdolls",
+	PlaceholderText = "0",
+	RemoveTextAfterFocusLost = false,
+	Callback = function(Text)
+		game.Players.LocalPlayer.leaderstats.Ragdolls.Value += Text
 	end,
 })
 end
