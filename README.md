@@ -5,3 +5,5 @@ v2 of https://github.com/gooserblx/Quix/
 - faster loading
 - more features
 - better autofarms
+
+lol
