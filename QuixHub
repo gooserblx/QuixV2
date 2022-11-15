@@ -1,3 +1,4 @@
+-- ragdoll stack
 if game.PlaceId == 7009987220 then 
     local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
     
@@ -12,7 +13,7 @@ if game.PlaceId == 7009987220 then
         },
             Discord = {
                 Enabled = false,
-                Invite = "sirius", -- The Discord invite code, do not include discord.gg/
+                Invite = "", -- The Discord invite code, do not include discord.gg/
                 RememberJoins = true -- Set this to false to make them join the discord every time they load it up
             },
         KeySystem = false, -- Set this to true to use our key system
@@ -172,6 +173,33 @@ if game.PlaceId == 7009987220 then
             local pos = game.Players.LocalPlayer.Character.HumanoidRootPart
             print("The Tower End TP Complete!")
             pos.CFrame = CFrame.new(183.782089, 227.582947, 339.266052, -0.121266514, 0.065266721, -0.990471959, 7.07398673e-09, 0.997835994, 0.0657519698, 0.992619991, 0.00797350518, -0.121004097)
+        end,
+    })
+
+    local TheAbyssEndTP = TPTab:CreateButton({
+        Name = "The Abyss End TP",
+        Callback = function()
+            local pos = game.Players.LocalPlayer.Character.HumanoidRootPart
+            print("The Abyss End TP Complete!")
+            pos.CFrame = CFrame.new(-88.9718094, 18.1507664, 397.054535, -0.15865469, -0.130923599, 0.978615224, -9.841159e-09, 0.991169214, 0.132603139, -0.987334132, 0.0210380983, -0.157253638)
+        end,
+    })
+
+    local TheMountainEndTP = TPTab:CreateButton({
+        Name = "The Mountain End TP",
+        Callback = function()
+            local pos = game.Players.LocalPlayer.Character.HumanoidRootPart
+            print("The Mountain End TP Complete!")
+            pos.CFrame = CFrame.new(187.996017, 312.599426, 398.25061, 0.0284169503, 0.0858213454, -0.995905221, -8.07373191e-09, 0.996307552, 0.0858560205, 0.999596179, -0.00243975804, 0.0283120219)
+        end,
+    })
+
+    local TheStatuesEndTP = TPTab:CreateButton({
+        Name = "The Statues End TP",
+        Callback = function()
+            local pos = game.Players.LocalPlayer.Character.HumanoidRootPart
+            print("The Statues TP Complete!")
+            pos.CFrame = CFrame.new(18.0847969, 416.80957, 468.655792, -0.999997497, 0.000237421962, -0.00222903723, -9.19336873e-09, 0.994374871, 0.105918206, 0.00224164594, 0.105917938, -0.994372368)
         end,
     })
 
