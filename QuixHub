@@ -207,3 +207,158 @@ end
 
 -- Thick Legends
 
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+
+local Window = Rayfield:CreateWindow({
+    Name = "Quix Hub",
+    LoadingTitle = "Quix Hub",
+    LoadingSubtitle = "by GooseRBLX",
+    ConfigurationSaving = {
+       Enabled = true,
+       FolderName = nil, -- Create a custom folder for your hub/game
+       FileName = "Quix Hub"
+    },
+    Discord = {
+       Enabled = true,
+       Invite = "HgEGemBaY3", -- The Discord invite code, do not include discord.gg/
+       RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+    },
+    KeySystem = true, -- Set this to true to use our key system
+    KeySettings = {
+       Title = "Quix Hub",
+       Subtitle = "Key System",
+       Note = "Join the discord for the key. (discord.gg/HgEGemBaY3)",
+       FileName = "QuixHubKey",
+       SaveKey = true,
+       GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+       Key = "ef8FofOFG33rfFVa_43qSd_RF$fOAFV+D_Quix"
+    }
+ })
+
+ local Main = Window:CreateTab("Main", nil) -- Title, Image
+
+ -- Functions
+
+ _G.AutoFarm = false
+_G.AutoUpgrade = false
+_G.AutoRebirth = false
+
+function Punch()
+local args = {
+    [1] = "Punch"
+}
+
+game:GetService("ReplicatedStorage").Remotes.UseTool:FireServer(unpack(args))
+end
+
+function Eat()
+    local args = {
+    [1] = "Food"
+}
+
+game:GetService("ReplicatedStorage").Remotes.UseTool:FireServer(unpack(args))
+end
+
+function Sell()
+    game:GetService("ReplicatedStorage").Remotes.YieldSell:InvokeServer()
+end
+
+function BuyAll()
+    local args = {
+    [1] = "Fist"
+    }
+
+game:GetService("ReplicatedStorage").Remotes.RequestBuyAll:FireServer(unpack(args))
+wait(0.5)
+    local args = {
+    [1] = "Food"
+    }
+
+game:GetService("ReplicatedStorage").Remotes.RequestBuyAll:FireServer(unpack(args))
+wait(0.5)
+local args = {
+    [1] = "Stomach"
+}
+
+game:GetService("ReplicatedStorage").Remotes.RequestBuyAll:FireServer(unpack(args))
+wait(0.5)
+if _G.AutoRebirth == true then
+local args = {
+    [1] = "Rebirth"
+}
+
+game:GetService("ReplicatedStorage").Remotes.RequestBuyAll:FireServer(unpack(args))
+end
+wait(0.5)
+local args = {
+    [1] = "Jump"
+}
+
+game:GetService("ReplicatedStorage").Remotes.RequestBuyAll:FireServer(unpack(args))
+wait(0.5)
+end
+
+function Autofarm()
+    while _G.AutoFarm == true do
+        for count = 1,10 do
+        Eat()
+        wait()
+        Punch()
+        wait()
+        Sell()
+        wait(0.75)
+        end
+        if _G.AutoUpgrade == true then
+        wait(1)
+        BuyAll()
+        wait()
+        end
+        end
+end    
+
+ local AutoFarmsLabel = Main:CreateLabel("Autofarms:")
+ 
+ local AutofarmToggle = Main:CreateToggle({
+    Name = "Autofarm",
+    CurrentValue = false,
+    Flag = "AutoFarm", 
+    Callback = function(Value)
+        print(Value)
+        _G.AutoFarm = Value
+        Autofarm()
+    end,
+ })
+
+ local AutoFarmSettingsLabel = Main:CreateLabel("Autofarm Settings:")
+
+ local AutoUpgradeToggle = Main:CreateToggle({
+    Name = "Auto Upgrade",
+    CurrentValue = false,
+    Flag = "AutoUpgrade", 
+    Callback = function(Value)
+        print(Value)
+        _G.AutoUpgrade = Value
+        AutofarmToggle:Set(false)
+        wait(1)
+        AutofarmToggle:Set(true)
+    end,
+ })
+
+ local AutoRebirthToggle = Main:CreateToggle({
+    Name = "Auto Rebirth",
+    CurrentValue = false,
+    Flag = "AutoRebirth", 
+    Callback = function(Value)
+        print(Value)
+        _G.AutoRebirth = Value
+        AutofarmToggle:Set(false)
+        wait(1)
+        AutofarmToggle:Set(true)
+    end,
+ })
+
+
+ local Credits = Window:CreateTab("Credits", nil) -- Title, Image
+
+ local Me = Credits:CreateLabel("Script Development: GooseRBLX")
+ local RayfieldDev = Credits:CreateLabel("UI Library Development: shelxware")
